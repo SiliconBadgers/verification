@@ -1,5 +1,9 @@
 # Verification and confidence in the design
 
+## Start here: current investigation packet
+
+Read the [starting guide](docs/START-HERE.md) for the current diagram, source evidence, parallel investigations and first useful outputs.
+
 Develop justified confidence in the accelerator by asking what it should do, what could invalidate that expectation and what evidence is sufficient for the claims being made. The team helps the project understand correctness, uncertainty and risk across component and system boundaries.
 
 ## Read the charter
