@@ -1,52 +1,39 @@
-# Verification and confidence in the design
+# Verification
 
-## Start here: current investigation packet
+Develop the architecture-based test plan, justify a methodology at every layer, and build/harden a runnable Synopsys verification environment.
 
-Read the [starting guide](docs/START-HERE.md) for the current diagram, source evidence, parallel investigations and first useful outputs.
+## Start here
 
-Develop justified confidence in the accelerator by asking what it should do, what could invalidate that expectation and what evidence is sufficient for the claims being made. The team helps the project understand correctness, uncertainty and risk across component and system boundaries.
+1. Read [the current assignment and artifact locations](docs/START-HERE.md).
+2. Complete [AI setup and the capture check](docs/git-ai.md) before AI edits or
+   your first commit. Every clone needs its local hook activated.
+3. Work on a branch and open a PR for `@abhinavnandwani` using
+   [CONTRIBUTING.md](CONTRIBUTING.md). Main requires a code-owner approval;
+   admins can bypass.
 
-## Read the charter
+## Current issues
 
-- [CHARTER.md](CHARTER.md): purpose, responsibilities, boundaries, member autonomy and collaboration.
-- [OBJECTIVES.md](OBJECTIVES.md): high-level outcomes that members can choose how to advance.
-- [SETUP.md](SETUP.md): optional technical setup and the scope of any existing example.
-
-## Choosing a contribution
-
-Members choose their work in conversation with the charter and their interests.
-A contribution can be a research question, a design study, an experiment, an
-implementation, a useful explanation or teaching material. Leads help connect
-people, questions and evidence. Shared interfaces and commitments are discussed
-with the teams that depend on them.
-
-The scaffold supplies places for that work. It does not specify a backlog,
-required first project, milestone sequence or personal assignment.
+- [Architecture-based test plan](https://github.com/SiliconBadgers/verification/issues/2)
+- [Per-layer methodology using Synopsys](https://github.com/SiliconBadgers/verification/issues/3)
+- [Runnable and hardened verification scaffold](https://github.com/SiliconBadgers/verification/issues/4)
 
 ## Repository structure
 
 | Location | Purpose |
 |---|---|
-| [docs/](docs/README.md) | Design explanations, proposals, reviews, decisions and learning material. Let the content evolve with the team’s questions; link research and experiment evidence where useful. |
-| [research/](research/README.md) | Literature notes, surveys, analytical studies and comparisons relevant to the charter. Explain the question, sources, interpretation and remaining uncertainty in a form that suits the work. |
-| [experiments/](experiments/README.md) | Exploratory studies, prototypes and experiment narratives. Make the question and interpretation understandable; preserve the context needed to revisit a result. These artifacts need not be production implementations. |
-| [tb/](tb/README.md) | Independent testbenches, models and reusable verification implementations. |
-| [fixtures/](fixtures/README.md) | Compact verification cases and metadata linking them to the relevant reference behavior. |
-| [plans/](plans/README.md) | Member-authored verification questions, assessment approaches and explanations of coverage or uncertainty. |
+| [plans/](plans/README.md) | Versioned test plan and requirements-to-tests/coverage mapping for issue #2. Use stable requirement/test IDs; identify assumptions and proposed completion criteria. |
+| [docs/methodology/](docs/methodology/README.md) | Per-layer methodology matrix, environment diagram, alternatives and feasibility evidence for issue #3. Identify the Synopsys role at each layer. |
+| [models/](models/README.md) | Independent reference models and documented numerical/timing semantics. Cite provenance and explain how the model differs from the implementation it checks. |
+| [tb/unit/](tb/unit/README.md) | Unit pilot testbenches, stimulus, checking and coverage. The existing tb/pe_mac_smoke_tb.sv remains an Icarus example, not completion of the Synopsys requirement. |
+| [tb/integration/](tb/integration/README.md) | Integration/SoC pilot and its connection to RTL. Label every stub and the scope of behavior actually checked. |
+| [scripts/regression/](scripts/regression/README.md) | Team-owned VCS compile/run, Verdi debug/coverage and deterministic regression entry points for issue #4. These are deliverables to implement, not working commands supplied by this folder. |
 
-The team may extend this structure as useful. Existing example entry points stay
-in their current locations, described in [SETUP.md](SETUP.md).
+## Current material and scope
 
-## Current material
+An independent Icarus MAC smoke test exists. Synopsys setup, unit/integration pilots and the test/methodology proposals remain open team deliverables; this refresh does not claim they have run.
 
-An independent MAC testbench and runner are present. They compare generated reference vectors and exercise reset, hold, clear and overflow behavior.
+[Shared diagram](https://github.com/SiliconBadgers/architecture/blob/main/docs/accelerator-diagram.md) · [Software evidence](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22)
 
-Existing code is optional material for learning or experimentation. Its behavior
-and tests describe that example and do not select the team’s future design.
-Reading or contributing to the charter, research and design documentation needs
-no tool installation.
-
-This is the [SiliconBadgers/verification](https://github.com/SiliconBadgers/verification) team repository.
-The [organization guide](https://github.com/SiliconBadgers/accelerator/blob/main/docs/TEAM_GUIDE.md)
-and [repository map](https://github.com/SiliconBadgers/accelerator/blob/main/docs/REPOSITORIES.md)
-explain how the teams connect.
+[CHARTER.md](CHARTER.md) and [OBJECTIVES.md](OBJECTIVES.md) describe the
+longer-term purpose. Current issues and the starting guide specify the work
+assigned now. [SETUP.md](SETUP.md) describes existing example commands and scope.

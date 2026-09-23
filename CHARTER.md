@@ -1,5 +1,9 @@
 # Verification and confidence in the design: team charter
 
+Current assignments are listed in [docs/START-HERE.md](docs/START-HERE.md) and
+the linked issues. The broader directions below provide context; they do not
+replace those deliverables.
+
 ## Purpose
 
 Develop justified confidence in the accelerator by asking what it should do, what could invalidate that expectation and what evidence is sufficient for the claims being made. The team helps the project understand correctness, uncertainty and risk across component and system boundaries.
