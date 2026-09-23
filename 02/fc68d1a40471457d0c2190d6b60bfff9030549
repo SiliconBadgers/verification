@@ -1,0 +1,67 @@
+.githooks/pre-commit
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-4
+CHARTER.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 3-6
+scripts/check-git-ai.py
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-116
+docs/START-HERE.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1,3,5,7-9,11-15,17,19-20,22,24-31,33,35,37-39,41
+scripts/install-repo-hooks.py
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-38
+models/README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-5
+.github/pull_request_template.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1,3,5,7-8,10,12-14,16
+AGENTS.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-33
+docs/methodology/README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-5
+.github/workflows/git-ai.yaml
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-30
+docs/git-ai.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-108
+scripts/regression/README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-5
+tb/integration/README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-5
+tests/contributor/test_commit_guard.py
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-159
+tb/unit/README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-5
+README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1,3,5,7-12,14,16-18,24-29,31,33,35,37-39
+plans/requirements-template.csv
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1
+CONTRIBUTING.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-36
+scripts/setup-git-ai.sh
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-27
+Makefile
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 6
+plans/README.md
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1,3,5
+docs/methodology/layer-template.csv
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1
+.github/workflows/contributor-checks.yaml
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 1-20
+.gitignore
+  s_a4fdefbacc4ddc::t_05a41a5c49003d 6-18
+.github/CODEOWNERS
+  s_a4fdefbacc4ddc::t_a7e6492e8850d4 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "02fc68d1a40471457d0c2190d6b60bfff9030549",
+  "prompts": {},
+  "sessions": {
+    "s_a4fdefbacc4ddc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c6c2-231a-7a30-bbf3-f68a9d08902d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
