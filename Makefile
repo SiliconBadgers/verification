@@ -3,7 +3,7 @@ PYTHON ?= python3
 setup:
 	$(PYTHON) -c "import sys; assert sys.version_info >= (3, 11), 'Python 3.11+ required'; print('PASS setup: standard-library starter, no packages required')"
 RTL_ROOT ?= ../rtl-compute
-MODELS_ROOT ?= ../ml-models
+MODELS_ROOT ?= ../software
 CONTRACT ?= ../architecture/contracts/mac-v0.json
 VERIFICATION_ROOT ?= ../verification
 doctor: setup

@@ -1,5 +1,9 @@
 # Verification and confidence in the design: team charter
 
+Current assignments are listed in [docs/START-HERE.md](docs/START-HERE.md) and
+the linked issues. The broader directions below provide context; they do not
+replace those deliverables.
+
 ## Purpose
 
 Develop justified confidence in the accelerator by asking what it should do, what could invalidate that expectation and what evidence is sufficient for the claims being made. The team helps the project understand correctness, uncertainty and risk across component and system boundaries.
@@ -26,7 +30,7 @@ Maintain reusable reasoning, environments, findings and educational material. He
 
 ## Boundaries and shared decisions
 
-Verification stewards independent assessment; each component team remains responsible for the quality and local validation of its work. Architecture and affected teams resolve intended semantics together. ml-models supplies reference behavior with stated assumptions. Accelerator organizes combined-system evidence and demonstrations. Verification communicates findings and confidence rather than unilaterally selecting system priorities or assigning implementation work.
+Verification stewards independent assessment; each component team remains responsible for the quality and local validation of its work. Architecture and affected teams resolve intended semantics together. Software supplies reference behavior with stated assumptions. Accelerator organizes combined-system evidence and demonstrations. Verification communicates findings and confidence rather than unilaterally selecting system priorities or assigning implementation work.
 
 ## Member autonomy
 
@@ -36,9 +40,9 @@ Members may choose a correctness question, examine a specification, investigate 
 
 | Partners | Shared concerns |
 |---|---|
-| architecture and ml-models | Clarify intended behavior and numerical assumptions, and investigate where references or specifications may themselves be incomplete. |
+| architecture and software | Clarify intended behavior and numerical assumptions, and investigate where references or specifications may themselves be incomplete. |
 | RTL and software teams | Exchange observable behavior, design intent and findings. Support actionable interpretation of mismatches without replacing component-owned validation. |
-| fpga, physical-design and accelerator | Help distinguish functional, platform and implementation claims, and explain which evidence supports each. |
+| soc, physical-design and accelerator | Help distinguish functional, platform and implementation claims, and explain which evidence supports each. |
 
 ## Possible directions
 

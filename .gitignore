@@ -3,3 +3,16 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Local/generated tooling outputs
+__pycache__/
+*.pyc
+/runs/
+*.vpd
+*.fsdb
+*.vdb/
+/simv*
+/csrc/
+/DVEfiles/
+*.ddc
+*.svf
