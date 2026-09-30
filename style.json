@@ -1,0 +1,8 @@
+{
+  "systemverilog": [
+    "tb/integration/*.sv"
+  ],
+  "python": [
+    "scripts/check_style.py"
+  ]
+}
