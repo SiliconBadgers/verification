@@ -42,7 +42,7 @@ Members may choose a correctness question, examine a specification, investigate 
 |---|---|
 | architecture and software | Clarify intended behavior and numerical assumptions, and investigate where references or specifications may themselves be incomplete. |
 | RTL and software teams | Exchange observable behavior, design intent and findings. Support actionable interpretation of mismatches without replacing component-owned validation. |
-| soc, physical-design and accelerator | Help distinguish functional, platform and implementation claims, and explain which evidence supports each. |
+| soc and physical-design | Help distinguish functional, platform and implementation claims, and explain which evidence supports each. |
 
 ## Possible directions
 
