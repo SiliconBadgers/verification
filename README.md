@@ -35,3 +35,5 @@ An independent Icarus MAC smoke test exists. Synopsys setup, unit/integration pi
 [CHARTER.md](CHARTER.md) and [OBJECTIVES.md](OBJECTIVES.md) describe the
 longer-term purpose. Current issues and the starting guide specify the work
 assigned now. [SETUP.md](SETUP.md) describes existing example commands and scope.
+
+Verilator routing pilot: [test scope](tb/integration/rtl-stub-test.md).
