@@ -1,0 +1,33 @@
+.github/workflows/integration-style.yml
+  s_5b555a9f3bd0b8::t_472693f3f64b24 1-21
+CONTRIBUTING.md
+  s_5b555a9f3bd0b8::t_e5f1694f356135 26-35
+Makefile
+  s_5b555a9f3bd0b8::t_018f5692e8b69f 14-20
+pyproject.toml
+  s_5b555a9f3bd0b8::t_7640aef60e2562 1-6
+scripts/check_style.py
+  s_5b555a9f3bd0b8::t_f05492fac65afc 1-61
+style.json
+  s_5b555a9f3bd0b8::t_7cdd64a681208d 1-8
+tb/integration/command_router_tb.sv
+  s_5b555a9f3bd0b8::t_0e311d2fd16f3c 1-13,15-32,34-35,37-50,53-65,68,70-101,104-131,133-140,143-147
+tb/integration/rtl-stub-test.md
+  s_5b555a9f3bd0b8::t_4792007964abb0 3,8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5a40dbd972fccba5f6caff270524c5ff8aa45b98",
+  "prompts": {},
+  "sessions": {
+    "s_5b555a9f3bd0b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d977-3795-73c0-aaed-6767eaef473e",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
