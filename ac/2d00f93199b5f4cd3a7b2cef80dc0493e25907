@@ -1,0 +1,23 @@
+Makefile
+  s_5b555a9f3bd0b8::t_9022746e053162 5
+run.py
+  s_5b555a9f3bd0b8::t_bcc659f21482f0 4-5,8-20,22-49,51-52
+tb/integration/rtl-stub-test.md
+  s_5b555a9f3bd0b8::t_3b39ec632c1d9c 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ac2d00f93199b5f4cd3a7b2cef80dc0493e25907",
+  "prompts": {},
+  "sessions": {
+    "s_5b555a9f3bd0b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d977-3795-73c0-aaed-6767eaef473e",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
