@@ -32,4 +32,4 @@ files and does not create commits.
 - [run.py](run.py)
 - [tb/pe_mac_smoke_tb.sv](tb/pe_mac_smoke_tb.sv)
 
-For the shared example, see the [workspace checkout guide](https://github.com/SiliconBadgers/accelerator/blob/main/docs/GETTING_STARTED.md).
+For the shared example, see the [workspace checkout guide](https://github.com/SiliconBadgers/soc/blob/main/docs/GETTING_STARTED.md).
