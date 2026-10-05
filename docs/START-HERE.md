@@ -2,6 +2,12 @@
 
 Develop the architecture-based test plan, justify a methodology at every layer, and build/harden a runnable Synopsys verification environment.
 
+## Implemented starting point
+
+Start with the [README quick start](../README.md), [training-style block stub](../tb/block/README.md),
+[test plan](../plans/block-verification-v0.1.md), and [validation status](VALIDATION.md).
+The stub and onboarding MAC qualify infrastructure only; CAE execution is still required.
+
 ## Assignment
 
 - [Architecture-based test plan](https://github.com/SiliconBadgers/verification/issues/2)

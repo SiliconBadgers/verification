@@ -1,0 +1,13 @@
+{
+  "id": "siliconbadgers.verification.block-stub.v0",
+  "status": "temporary verification plumbing; NOT an accelerator interface",
+  "clock": "10ns",
+  "request": {"id_bits": 16, "opcode_bits": 2, "a_bits": 32, "b_bits": 32},
+  "response": {"id_bits": 16, "data_bits": 32, "error_bits": 1},
+  "acceptance": "valid && ready at rising clock edge",
+  "max_outstanding": 1,
+  "operations": {"0": "unsigned add modulo 2^32", "1": "bitwise xor", "2,3": "error with zero data"},
+  "reset": "asynchronous active-low; clears all stub work; no external side effects",
+  "tested_reset_scope": "initial reset and reset/reuse after all accepted work retires",
+  "not_modeled": ["DMA", "memory visibility", "accelerator arithmetic", "persistent state", "production ABI"]
+}

@@ -1,5 +1,6 @@
-# tb/unit
+# Unit examples
 
-Unit pilot testbenches, stimulus, checking and coverage. The existing tb/pe_mac_smoke_tb.sv remains an Icarus example, not completion of the Synopsys requirement.
+[Home](../../README.md) | [Primary block scaffold](../block/README.md)
 
-See [the current assignment](../../docs/START-HERE.md).
+- [Onboarding MAC environment](mac/README.md)
+- [Add an actual accelerator block](../../docs/ADDING-A-BLOCK.md)

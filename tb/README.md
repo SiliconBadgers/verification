@@ -1,9 +1,8 @@
-# verification/tb
+# Testbenches
 
-Independent testbenches, models and reusable verification implementations.
+[Home](../README.md)
 
-Existing implementation or reference files are present; see [setup and example scope](../SETUP.md).
-
-This is a suggested home for work supporting the [charter](../CHARTER.md) and
-[objectives](../OBJECTIVES.md). The team can reorganize or extend it as its work
-develops. A directory’s presence does not assign a task or require an artifact.
+- [Primary training-style block stub](block/README.md)
+- [Shared UVM components](common/README.md)
+- [Optional onboarding MAC](unit/mac/README.md)
+- [Routing experiment scope](integration/rtl-stub-test.md)

@@ -1,5 +1,7 @@
-# docs/methodology
+# Methodology
 
-Per-layer methodology matrix, environment diagram, alternatives and feasibility evidence for issue #3. Identify the Synopsys role at each layer.
+[Home](../../README.md)
 
-See [the current assignment](../../docs/START-HERE.md).
+- [Block diagram and per-layer methodology](block-environment.md)
+- [Editable Mermaid source](block-environment.mmd)
+- [Cross-repository comparison](repository-cross-reference.md)

@@ -2,9 +2,11 @@
   "systemverilog": [
     "rtl/**/*.sv",
     "tb/**/*.sv",
+    "tb/**/*.svh",
     "sim/**/*.sv"
   ],
   "python": [
-    "scripts/*.py"
+    "scripts/**/*.py",
+    "tb/**/run/*.py"
   ]
 }

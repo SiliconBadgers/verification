@@ -1,0 +1,3 @@
+# Optional local checks only. CAE simulation runner uses Python's standard library.
+ruff==0.16.6
+pyslang==12.0.0

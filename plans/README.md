@@ -1,5 +1,10 @@
-# plans
+# Test plans
 
-Versioned test plan and requirements-to-tests/coverage mapping for issue #2. Use stable requirement/test IDs; identify assumptions and proposed completion criteria.
+[Home](../README.md)
 
-See [the current assignment](../docs/START-HERE.md).
+- [Version 0.1 test plan](block-verification-v0.1.md)
+- [35 traceable requirements](requirements-v0.1.csv)
+- [Template for future requirements](requirements-template.csv)
+
+STUB-* qualifies temporary plumbing; MAC-* qualifies onboarding infrastructure.
+Production requirements remain proposals until their interfaces and tests exist.

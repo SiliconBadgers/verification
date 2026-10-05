@@ -16,6 +16,16 @@ module command_router_tb;
 
   always #5ns clk = ~clk;
 
+`ifdef SB_FSDB
+  initial begin
+    // verilog_lint: waive plusarg-assignment -- Presence-only boolean switch.
+    if ($test$plusargs("SB_FSDB")) begin
+      $fsdbDumpfile("waves.fsdb");
+      $fsdbDumpvars(0, command_router_tb);
+    end
+  end
+`endif
+
   command_router_test_top u_dut (
     .clk_i(clk),
     .rst_ni(rst_n),
@@ -51,6 +61,7 @@ module command_router_tb;
     repeat (4) begin
       tick();
       if (!completion_valid || cmd_ready || completion.sequence_id != sequence_id ||
+
           completion.status != expected) begin
         $fatal(1, "completion or backpressure failure");
       end

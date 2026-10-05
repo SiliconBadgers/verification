@@ -27,7 +27,7 @@ def discover(patterns):
             p
             for pattern in patterns
             for p in ROOT.glob(pattern)
-            if p.is_file() and str(p.relative_to(ROOT)) in tracked
+            if p.is_file() and p.relative_to(ROOT).as_posix() in tracked
         }
     )
 
@@ -35,20 +35,24 @@ def discover(patterns):
 files = discover(config["systemverilog"])
 failed = False
 for path in files:
-    formatted = subprocess.check_output(
-        [
-            "verible-verilog-format",
-            "--column_limit=100",
-            "--indentation_spaces=2",
-            "--wrap_spaces=2",
-            str(path),
-        ],
-        text=True,
-    )
     original = path.read_text()
+    formatted = (
+        subprocess.check_output(
+            [
+                "verible-verilog-format",
+                "--column_limit=100",
+                "--indentation_spaces=2",
+                "--wrap_spaces=2",
+                "-",
+            ],
+            input=original.encode("utf-8"),
+        )
+        .decode("utf-8")
+        .replace("\r\n", "\n")
+    )
     if formatted != original:
         if args.fix:
-            path.write_text(formatted)
+            path.write_text(formatted, newline="\n")
         else:
             print(
                 "".join(
