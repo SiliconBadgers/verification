@@ -7,8 +7,8 @@ MODELS_ROOT ?= ../software
 CONTRACT ?= ../architecture/contracts/mac-v0.json
 VERIFICATION_ROOT ?= ../verification
 doctor: setup
-	$(PYTHON) -c "import shutil; assert shutil.which('iverilog') and shutil.which('vvp'), 'Install Icarus Verilog'; print('PASS Icarus tools found')"
-test:
+	$(PYTHON) "$(RTL_ROOT)/scripts/vcs.py" check
+test: doctor
 	$(PYTHON) "$(MODELS_ROOT)/generate_vectors.py" --contract "$(CONTRACT)" --output build/mac-vectors.txt
 	$(PYTHON) "$(VERIFICATION_ROOT)/run.py" --rtl-root "$(RTL_ROOT)" --vectors build/mac-vectors.txt
 

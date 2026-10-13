@@ -39,3 +39,12 @@ automatically. Ignored files, third-party dependencies, and submodule contents
 are excluded. A scaffold with no SystemVerilog explicitly reports that there
 are no SV inputs; it does not claim RTL validation. Run component checks in
 each owning repository. Style checks do not replace elaboration or simulation.
+
+## Simulation baseline
+
+RTL simulation results must use Synopsys VCS Y-2026.03_Full64 with assertions
+and `-exitstatus` enabled. Verilator may be used for lint only. Include exact
+source/dependency revisions, commands, seeds, test/check counts and logs.
+Follow [SETUP.md](SETUP.md) for the shared VCS launcher; missing access is a
+failed prerequisite, not a reason to substitute another simulator. Preserve
+earlier dated results as historical evidence.
