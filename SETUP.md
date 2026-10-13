@@ -1,35 +1,44 @@
-# verification: optional example setup
+# Verification setup
 
-No tools are required to read the charter or contribute research and design
-material. The commands below apply only to the existing technical example.
+The MAC example uses Synopsys VCS `Y-2026.03_Full64`, Make and Python 3.11+.
+Keep Architecture, Software, RTL and Verification checkouts as siblings.
+The RTL checkout must include the VCS launcher at `scripts/vcs.py`, introduced
+by [RTL PR #14](https://github.com/SiliconBadgers/rtl/pull/14). Use the RTL
+revision recorded in the validation report or the updated SoC workspace pin.
 
-## Existing example
-
-An independent MAC testbench and runner are present. They compare generated reference vectors and exercise reset, hold, clear and overflow behavior.
-
-Prerequisites: Make, Python 3.11+ and Icarus Verilog (`iverilog` and `vvp`). The current Python code uses the standard library.
-Keep the component folders as siblings for the provided cross-component paths.
-
-From this component directory:
+On UW–Madison CAE Linux:
 
 ```sh
-make setup
+module load synopsys/vcs-mx/2026.03
 make doctor
 make test
 ```
 
-These commands check the current example files. The combined MAC example can be
-run from the sibling `accelerator` folder using the same commands. It exercises
-four model tests, 261 reference vectors and 131,600 RTL checks. It establishes
-no full-accelerator, board or physical-implementation claim.
+Run Python and Make on the host. The shared helper invokes tools through
+`synopsys-run` on CAE, or directly on another licensed Linux installation.
+It checks the exact version, enables assertions, supplies a default
+`1ns/1ps` timescale and runs `simv -exitstatus`. Compilation and simulation
+have 900-second limits. There is no Icarus or Verilator simulation fallback.
+Verilator may be used for lint only.
 
-Run `make clean` from `accelerator` to remove generated build outputs and Python
-caches before sharing a folder snapshot. The runner reads the current sibling
-files and does not create commits.
+The reference-vector generator remains in Software, the RTL in RTL, and the
+independent testbench and result checks in Verification. Override `RTL_ROOT`,
+`MODELS_ROOT` and `CONTRACT` for a different checkout layout. Record all component
+revisions with results; the coordinated VCS runner and RTL helper must both be
+present.
 
-## Example files
+```sh
+python3 run.py --rtl-root ../rtl --vectors build/mac-vectors.txt
+```
 
-- [run.py](run.py)
-- [tb/pe_mac_smoke_tb.sv](tb/pe_mac_smoke_tb.sv)
+Logs, actual counts, input hashes, elapsed times and exit codes are saved under
+`build/mac/vcs/`. Use `--out` to preserve separate runs. Success requires both
+MAC PASS markers, positive check counts and a zero simulator exit status.
+This example checks signed arithmetic, hold, clear, reset and overflow. It does
+not establish full-accelerator correctness or coverage closure.
 
-For the shared example, see the [workspace checkout guide](https://github.com/SiliconBadgers/soc/blob/main/docs/GETTING_STARTED.md).
+The earlier SoC routing experiment is documented in
+[tb/integration/rtl-stub-test.md](tb/integration/rtl-stub-test.md); its historical
+simulator results do not replace a current VCS run. See the
+[workspace guide](https://github.com/SiliconBadgers/soc/blob/main/docs/GETTING_STARTED.md)
+for the combined repository layout.

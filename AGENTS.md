@@ -28,3 +28,11 @@ do not guess. No additional software, hooks or setup is required.
   a compiler team, custom CPU core or custom ISA.
 - Synopsys VCS/Verdi access and runnable pilots are team deliverables. UVM
   and C++ roles must be justified; do not preselect a framework for every layer.
+
+## Required simulator
+
+Use Synopsys VCS Y-2026.03_Full64 for all RTL simulation. Keep assertions
+enabled and use `simv -exitstatus`. Verilator is permitted for lint only;
+do not fall back to Verilator or Icarus simulation. The MAC runner uses the
+coordinated RTL checkout's `scripts/vcs.py` for version checks, CAE/native
+execution and timeouts. Keep independent testbenches and checking here.
