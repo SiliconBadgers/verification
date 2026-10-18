@@ -37,3 +37,6 @@ longer-term purpose. Current issues and the starting guide specify the work
 assigned now. [SETUP.md](SETUP.md) describes existing example commands and scope.
 
 Historical routing pilot: [test scope](tb/integration/rtl-stub-test.md).
+
+Python tooling uses uv 0.12.23+ and the committed `uv.lock`. Start with
+`make setup`; see [SETUP.md](SETUP.md) for locked commands and tool versions.

@@ -1,10 +1,12 @@
 .PHONY: setup doctor test
+UV ?= uv
 PYTHON ?= python3
+RUN_PYTHON = "$(UV)" run --locked "$(PYTHON)"
 setup:
-	$(PYTHON) -c "import sys; assert sys.version_info >= (3, 11), 'Python 3.11+ required'; print('PASS setup: standard-library starter, no packages required')"
+	"$(UV)" sync --locked
 RTL_ROOT ?= ../rtl
 doctor: setup
-	$(PYTHON) "$(RTL_ROOT)/scripts/vcs.py" check
+	$(RUN_PYTHON) "$(RTL_ROOT)/scripts/vcs.py" check
 # This delegates to RTL-owned tests; it is not independent verification coverage.
 MATRIX_UNIT_ARGS ?=
 test:
@@ -12,11 +14,11 @@ test:
 
 .PHONY: style format
 style:
-	$(PYTHON) scripts/check_style.py
+	"$(UV)" run --locked --group dev "$(PYTHON)" scripts/check_style.py
 
 format:
-	$(PYTHON) scripts/check_style.py --fix
+	"$(UV)" run --locked --group dev "$(PYTHON)" scripts/check_style.py --fix
 
 .PHONY: test-tooling
 test-tooling:
-	$(PYTHON) -m unittest discover -s scripts -p 'test_*.py'
+	$(RUN_PYTHON) -m unittest discover -s scripts -p 'test_*.py'
