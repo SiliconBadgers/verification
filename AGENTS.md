@@ -33,6 +33,7 @@ do not guess. No additional software, hooks or setup is required.
 
 Use Synopsys VCS Y-2026.03_Full64 for all RTL simulation. Keep assertions
 enabled and use `simv -exitstatus`. Verilator is permitted for lint only;
-do not fall back to Verilator or Icarus simulation. The MAC runner uses the
-coordinated RTL checkout's `scripts/vcs.py` for version checks, CAE/native
-execution and timeouts. Keep independent testbenches and checking here.
+do not fall back to Verilator or Icarus simulation. The current `make test` delegates to the RTL-owned Matrix Unit regression,
+which uses `scripts/vcs.py` for version checks, CAE/native execution and
+timeouts. This is not independent verification coverage. Keep new independent
+testbenches and checking here; the obsolete standalone MAC pilot is retired.

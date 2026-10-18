@@ -1,44 +1,46 @@
 # Verification setup
 
-The MAC example uses Synopsys VCS `Y-2026.03_Full64`, Make and Python 3.11+.
-Keep Architecture, Software, RTL and Verification checkouts as siblings.
-The RTL checkout must include the VCS launcher at `scripts/vcs.py`, introduced
-by [RTL PR #14](https://github.com/SiliconBadgers/rtl/pull/14). Use the RTL
-revision recorded in the validation report or the updated SoC workspace pin.
+The obsolete standalone MAC DUT, runner and smoke test are retired. `make test`
+now delegates to the current RTL-owned Matrix Unit suite; it is not independent
+Verification-owned coverage or a claim that the retired accumulator interface
+is still tested. Historical reports under `reports/` describe their recorded
+revisions only and are not instructions for the current checkout.
 
+## Current-design regression
+
+Use Synopsys VCS `Y-2026.03_Full64`, Bash 3.2+, Make and Python 3.11+.
+Keep RTL and Verification checkouts as siblings, or set `RTL_ROOT`.
 On UW–Madison CAE Linux:
 
 ```sh
 module load synopsys/vcs-mx/2026.03
 make doctor
-make test
+make test RTL_ROOT=../rtl
+make test RTL_ROOT=../rtl MATRIX_UNIT_ARGS="--only array_8x8_acc32 --seeds 7"
 ```
 
-Run Python and Make on the host. The shared helper invokes tools through
-`synopsys-run` on CAE, or directly on another licensed Linux installation.
-It checks the exact version, enables assertions, supplies a default
-`1ns/1ps` timescale and runs `simv -exitstatus`. Compilation and simulation
-have 900-second limits. There is no Icarus or Verilator simulation fallback.
-Verilator may be used for lint only.
+The target calls `make -C "$RTL_ROOT" test-matrix-unit` and propagates failures.
+It no longer uses the Software vector generator, the standalone MAC contract,
+or a legacy MAC runner. The RTL checkout must contain the Matrix Unit runner
+and its VCS helper, available in RTL revision
+`7d78d3c9b326e218e8e26390ca523c5413c09751` and later compatible revisions.
+See [the RTL test guide](https://github.com/SiliconBadgers/rtl/blob/main/tb/compute/Matrix_Unit/README.md)
+for configurations, seeds, failure injection, result counts and logs under
+`build/matrix_unit/vcs/` in the RTL checkout. Record both repository revisions.
 
-The reference-vector generator remains in Software, the RTL in RTL, and the
-independent testbench and result checks in Verification. Override `RTL_ROOT`,
-`MODELS_ROOT` and `CONTRACT` for a different checkout layout. Record all component
-revisions with results; the coordinated VCS runner and RTL helper must both be
-present.
+The helper checks the exact VCS version, enables assertions, uses
+`simv -exitstatus`, and bounds compilation and simulation time. Run Python and
+Make on the CAE host; the helper uses `synopsys-run` there or a licensed native
+installation elsewhere. There is no Icarus or Verilator simulation fallback;
+Verilator is permitted for lint only. Missing tools are failed prerequisites.
 
-```sh
-python3 run.py --rtl-root ../rtl --vectors build/mac-vectors.txt
-```
+## Tooling checks and remaining coverage
 
-Logs, actual counts, input hashes, elapsed times and exit codes are saved under
-`build/mac/vcs/`. Use `--out` to preserve separate runs. Success requires both
-MAC PASS markers, positive check counts and a zero simulator exit status.
-This example checks signed arithmetic, hold, clear, reset and overflow. It does
-not establish full-accelerator correctness or coverage closure.
+`make test-tooling` checks Make delegation, argument forwarding and failure
+propagation with a fake Make target. These are Python tooling tests, not RTL
+simulations. `make style` performs source formatting and lint checks.
 
-The earlier SoC routing experiment is documented in
-[tb/integration/rtl-stub-test.md](tb/integration/rtl-stub-test.md); its historical
-simulator results do not replace a current VCS run. See the
-[workspace guide](https://github.com/SiliconBadgers/soc/blob/main/docs/GETTING_STARTED.md)
-for the combined repository layout.
+Independent current-design unit/integration environments, coverage closure and
+Verdi debug workflows remain open in issue #4. The routing pilot testbench is
+retained; its [historical scope](tb/integration/rtl-stub-test.md) does not replace
+a current VCS result or establish full-accelerator correctness.

@@ -26,13 +26,13 @@ Develop the architecture-based test plan, justify a methodology at every layer, 
 | [plans/](../plans/README.md) | Versioned test plan and requirements-to-tests/coverage mapping for issue #2. Use stable requirement/test IDs; identify assumptions and proposed completion criteria. |
 | [docs/methodology/](../docs/methodology/README.md) | Per-layer methodology matrix, environment diagram, alternatives and feasibility evidence for issue #3. Identify the Synopsys role at each layer. |
 | [models/](../models/README.md) | Independent reference models and documented numerical/timing semantics. Cite provenance and explain how the model differs from the implementation it checks. |
-| [tb/unit/](../tb/unit/README.md) | Unit pilot testbenches, stimulus, checking and coverage. The existing tb/pe_mac_smoke_tb.sv runs with VCS through run.py; it covers the MAC example only. |
+| [tb/unit/](../tb/unit/README.md) | Unit pilot testbenches, stimulus, checking and coverage. The obsolete standalone MAC pilot is retired; independent current-design unit coverage remains to be developed. |
 | [tb/integration/](../tb/integration/README.md) | Integration/SoC pilot and its connection to RTL. Label every stub and the scope of behavior actually checked. |
 | [scripts/regression/](../scripts/regression/README.md) | Team-owned VCS compile/run, Verdi debug/coverage and deterministic regression entry points for issue #4. These are deliverables to implement, not working commands supplied by this folder. |
 
 ## What runs today
 
-The independent MAC smoke test runs through VCS. Broader unit/integration environments, coverage closure, Verdi debug workflows and the test/methodology proposals remain open deliverables.
+`make test` delegates to the RTL-owned current Matrix Unit VCS regression. It does not provide independent Verification-owned coverage. The obsolete standalone MAC pilot is retired. Independent unit/integration environments, coverage closure, Verdi debug workflows and the test/methodology proposals remain open deliverables.
 
 These folders organize the work; they do not complete the issues. Use the
 existing evidence now and publish useful intermediate results. Arrange a team

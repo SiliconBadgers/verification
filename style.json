@@ -5,7 +5,6 @@
     "sim/**/*.sv"
   ],
   "python": [
-    "scripts/*.py",
-    "run.py"
+    "scripts/*.py"
   ]
 }
