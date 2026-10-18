@@ -1,5 +1,27 @@
 # Verification setup
 
+## Python tooling with uv
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) 0.12.23
+or newer (CI uses exactly 0.12.23), then run from this checkout:
+
+```sh
+make setup
+make test-tooling
+make style
+```
+
+Python 3.11+ is required. `uv.lock` is committed; Make and the documented Python
+commands use `uv run --locked`, so a stale lockfile fails instead of changing
+versions silently. The project is tooling-only and is not installed as a package.
+The default environment needs no third-party packages. Style/format select the
+`dev` group, which pins Ruff 0.16.6; Verible remains a separately installed tool.
+No virtual-environment activation or global Ruff installation is required.
+Use `UV=/path/to/uv` and `PYTHON=/path/to/python` to override executable paths;
+use `UV_PYTHON=3.11` to choose the interpreter uv provisions for `.venv`.
+After an intentional dependency edit, run `uv lock`, review and commit the
+lockfile, and rerun the relevant checks. Do not edit `uv.lock` by hand.
+
 The obsolete standalone MAC DUT, runner and smoke test are retired. `make test`
 now delegates to the current RTL-owned Matrix Unit suite; it is not independent
 Verification-owned coverage or a claim that the retired accumulator interface
