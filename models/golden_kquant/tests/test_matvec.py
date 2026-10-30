@@ -45,6 +45,58 @@ def c_matvec(wtype, w, x):
     return y, list(struct.unpack(f"<{len(raw) // 4}I", raw))
 
 
+def assert_output_rows(test, got, want, label):
+    """Compare Python outputs with C binary32 words, then check useful stimulus."""
+    test.assertEqual(len(got), len(want), f"{label}: output lengths differ")
+    bad = []
+    for row, (value, bits) in enumerate(zip(got, want)):
+        want_nan = (bits & 0x7F800000) == 0x7F800000 and (bits & 0x007FFFFF) != 0
+        if (math.isnan(value) and want_nan) or f32_bits(value) == bits:
+            continue
+        bad.append(row)
+    test.assertFalse(bad, f"{label}: {len(bad)} outputs differ; first rows {bad[:5]}")
+    test.assertTrue(
+        any(math.isfinite(value) and value != 0 for value in got),
+        f"{label}: no finite nonzero output",
+    )
+
+
+class MatVecComparison(unittest.TestCase):
+    """Checker controls: require neither the model file nor the C harness."""
+
+    def test_matching_bits_and_two_sided_nan(self):
+        assert_output_rows(
+            self,
+            [1.0, -0.0, float("nan"), float("inf")],
+            [f32_bits(1.0), 0x80000000, 0x7FC00001, 0x7F800000],
+            "matching",
+        )
+
+    def test_mismatches_fail(self):
+        cases = [
+            ([float("nan"), float("nan")], [f32_bits(1.0), f32_bits(2.0)]),
+            ([1.0, 2.0], [0x7FC00000, f32_bits(2.0)]),
+            ([1.0, 2.0], [f32_bits(1.0), f32_bits(3.0)]),
+            ([1.0, 0.0], [f32_bits(1.0), 0x80000000]),
+        ]
+        for got, want in cases:
+            with self.subTest(got=got, want=want):
+                with self.assertRaisesRegex(AssertionError, "outputs differ"):
+                    assert_output_rows(self, got, want, "mismatch")
+
+    def test_length_mismatches_fail(self):
+        for got, want in [([1.0], []), ([], [f32_bits(1.0)])]:
+            with self.subTest(got=got, want=want):
+                with self.assertRaisesRegex(AssertionError, "output lengths differ"):
+                    assert_output_rows(self, got, want, "length")
+
+    def test_missing_finite_nonzero_output_fails(self):
+        for got in [[], [0.0, -0.0], [float("nan"), float("inf")]]:
+            with self.subTest(got=got):
+                with self.assertRaisesRegex(AssertionError, "no finite nonzero output"):
+                    assert_output_rows(self, got, [f32_bits(v) for v in got], "sanity")
+
+
 class MatVec(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -69,10 +121,7 @@ class MatVec(unittest.TestCase):
         self.assertEqual(quantize_activation(t.type_name, x), y_c, f"{name}: activation blocks")
         got = matvec_tensor(self.g, name, x)
         self.assertEqual(len(got), t.rows)
-        bad = [r for r, (g, wv) in enumerate(zip(got, want))
-               if f32_bits(g) != wv and not math.isnan(g)]
-        self.assertFalse(bad, f"{name}: {len(bad)} of {t.rows} outputs differ, first rows {bad[:5]}")
-        self.assertTrue(any(v != 0 for v in got), f"{name}: all outputs zero")
+        assert_output_rows(self, got, want, name)
 
     def test_q4_K_attn_gate(self):
         self.check_tensor("blk.0.attn_gate.weight")  # 2048 x 2048
