@@ -1,0 +1,14 @@
+Run started (UTC): 2026-10-30T02:41:21Z
+Verification commit: ad634a4960363f552e5bd5d898f894dcfcdd2f86
+Source worktree: clean LF clone
+llama.cpp commit: f46bc30cb6a7f68a67e34a00061e20a4ad1eff43
+llama.cpp tracked worktree: clean
+Python 3.14.4
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Copyright (C) 2025 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+GM_SEED=1
+Model SHA256: aaf42c8b7c3cab2bf3d69c355048d4a0ee9973d48f16c731c0520ee914699223  /home/adams/ref/models/qwen35-2b-q4km/Qwen3.5-2B-Q4_K_M.gguf
+Rebuilt harness SHA256: 0394e5ea74dc932b3d5fdc7e9d2862fab66c25dc941b95562ecd21aa0f546280  /home/adams/pr13-review-ad634a4-20261029/harness/gm_harness

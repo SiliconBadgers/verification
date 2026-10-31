@@ -22,3 +22,10 @@ format:
 .PHONY: test-tooling
 test-tooling:
 	$(RUN_PYTHON) -m unittest discover -s scripts -p 'test_*.py'
+
+# Golden model of llama.cpp's quantized matrix arithmetic and the matrix unit's contract
+# (models/golden_kquant). Bit-exact tests skip without its C harness or the model file; see
+# that README for tools/fetch_reference.sh and harness/build.sh.
+.PHONY: test-models
+test-models:
+	cd models/golden_kquant && $(RUN_PYTHON) -m unittest discover -s tests -v

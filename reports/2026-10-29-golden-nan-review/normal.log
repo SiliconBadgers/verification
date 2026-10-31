@@ -1,0 +1,35 @@
+test_adversarial_blocks (test_dequant.Dequant.test_adversarial_blocks) ... ok
+test_random_blocks (test_dequant.Dequant.test_random_blocks) ... ok
+test_real_tensors (test_dequant.Dequant.test_real_tensors) ... ok
+test_kmask_matches_get_scale_min_k4 (test_dequant.ScaleUnpack.test_kmask_matches_get_scale_min_k4) ... ok
+test_min_term_rounding (test_dot.Dot.test_min_term_rounding)
+Directed: only the min term survives (all q8_K codes 0), and the bsums make ... ok
+test_quantized_activations (test_dot.Dot.test_quantized_activations) ... ok
+test_raw_activations (test_dot.Dot.test_raw_activations) ... ok
+test_real_rows (test_dot.Dot.test_real_rows) ... ok
+test_special_weight_scales (test_dot.Dot.test_special_weight_scales) ... ok
+test_contribution_overflow_sign (test_hwmode.Contract.test_contribution_overflow_sign) ... ok
+test_nan_scale (test_hwmode.Contract.test_nan_scale) ... ok
+test_plain_block_is_exact (test_hwmode.Contract.test_plain_block_is_exact) ... ok
+test_round_half_even (test_hwmode.Contract.test_round_half_even) ... ok
+test_saturation_to_each_infinity (test_hwmode.Contract.test_saturation_to_each_infinity) ... ok
+test_unscaled_wraps_to_acc_width (test_hwmode.Contract.test_unscaled_wraps_to_acc_width) ... ok
+test_zero_and_subnormal_scales_count_as_zero (test_hwmode.Contract.test_zero_and_subnormal_scales_count_as_zero) ... ok
+test_bf16_rounding (test_hwmode.Requantize.test_bf16_rounding) ... ok
+test_ranges_and_scales (test_hwmode.Requantize.test_ranges_and_scales) ... ok
+test_q4_K_attn_gate (test_matvec.MatVec.test_q4_K_attn_gate) ... ok
+test_q5_K_attn_qkv (test_matvec.MatVec.test_q5_K_attn_qkv) ... ok
+test_q6_K_ffn_down (test_matvec.MatVec.test_q6_K_ffn_down) ... ok
+test_q6_K_output_head (test_matvec.MatVec.test_q6_K_output_head) ... skipped 'set GM_FULL=1 for the 248,320-row output head'
+test_q8_0_ssm_alpha (test_matvec.MatVec.test_q8_0_ssm_alpha) ... ok
+test_length_mismatches_fail (test_matvec.MatVecComparison.test_length_mismatches_fail) ... ok
+test_matching_bits_and_two_sided_nan (test_matvec.MatVecComparison.test_matching_bits_and_two_sided_nan) ... ok
+test_mismatches_fail (test_matvec.MatVecComparison.test_mismatches_fail) ... ok
+test_missing_finite_nonzero_output_fails (test_matvec.MatVecComparison.test_missing_finite_nonzero_output_fails) ... ok
+test_q8_0 (test_quant.QuantQ80.test_q8_0) ... ok
+test_q8_K (test_quant.QuantQ8K.test_q8_K) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 7.644s
+
+OK (skipped=1)
