@@ -1,0 +1,4 @@
+harness-build exit=0 elapsed_seconds=4
+normal exit=0 elapsed_seconds=7
+full exit=0 elapsed_seconds=109
+tooling exit=0 elapsed_seconds=0

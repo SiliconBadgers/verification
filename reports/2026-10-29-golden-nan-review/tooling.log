@@ -1,0 +1,14 @@
+test_current_suite_and_arguments_are_forwarded (test_test_entrypoint.TestEntrypointTests.test_current_suite_and_arguments_are_forwarded) ... ok
+test_current_suite_failure_is_propagated (test_test_entrypoint.TestEntrypointTests.test_current_suite_failure_is_propagated) ... ok
+test_missing_current_suite_fails (test_test_entrypoint.TestEntrypointTests.test_missing_current_suite_fails) ... ok
+test_missing_rtl_checkout_fails (test_test_entrypoint.TestEntrypointTests.test_missing_rtl_checkout_fails) ... ok
+test_retired_runner_and_testbench_are_absent (test_test_entrypoint.TestEntrypointTests.test_retired_runner_and_testbench_are_absent) ... ok
+test_setup_uses_locked_sync (test_uv_tooling.UvMakeTests.test_setup_uses_locked_sync) ... ok
+test_style_and_format_select_locked_dev_group (test_uv_tooling.UvMakeTests.test_style_and_format_select_locked_dev_group) ... ok
+test_tooling_tests_use_locked_python (test_uv_tooling.UvMakeTests.test_tooling_tests_use_locked_python) ... ok
+test_uv_failure_is_not_ignored_and_override_handles_spaces (test_uv_tooling.UvMakeTests.test_uv_failure_is_not_ignored_and_override_handles_spaces) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.019s
+
+OK
