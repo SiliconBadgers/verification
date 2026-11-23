@@ -42,11 +42,13 @@ tensors.
 | `golden/dot.py` | The four dot products: 8 interleaved lanes, the min term, C's order |
 | `golden/matvec.py` | Matrix × vector for one token |
 | `golden/hwmode.py` | The matrix unit's contract, and the requantization rule (an assumption) |
+| `golden/matrix_v1.py` | The proposed Matrix specification (rtl PR #32) on top of that contract: chained native sums, M/N masks, the short final scale block, output encodings 0–4 with packing, and the version-1 command record |
 | `golden/gguf.py` | Minimal GGUF reader |
 | `harness/` | C harness that runs llama.cpp's own reference functions |
 | `tests/` | Bit-exact tests against the harness, plus directed tests of the contract |
 | `tools/fetch_reference.sh` | Fetches the pinned llama.cpp sources and model file (sha256-checked), outside the repo |
 | `tools/export_rtl_vectors.py` | Writes the RTL's `tb/compute/Matrix_Unit/bpu_sa_golden_vectors_pkg.sv` |
+| `tools/export_convert_vectors.py` | Writes the RTL's `tb/compute/Matrix_Unit/bpu_sa_convert_vectors_pkg.sv` (output-encoding vectors from `golden/matrix_v1.py`) |
 | `tools/accuracy_study.py` | Writes `ACCURACY.md` |
 | `tools/inspect_gguf.py` | Summarizes a model file |
 
@@ -81,6 +83,17 @@ python3 tools/export_rtl_vectors.py ~/ref/models/qwen35-2b-q4km/Qwen3.5-2B-Q4_K_
 
 The output is deterministic and already Verible-formatted. The RTL runs it as `wrap_8x8_golden`
 in `tb/compute/Matrix_Unit/run_tests.sh`.
+
+**Regenerating the output-encoding vectors** (no model file needed):
+
+```sh
+python3 tools/export_convert_vectors.py "$RTL/tb/compute/Matrix_Unit/bpu_sa_convert_vectors_pkg.sv"
+```
+
+The defaults (`--count 3000 --seed 1`) give the 3,974 vectors the RTL runs as `convert_4lanes`.
+Two points the original spec left open are pinned in `golden/matrix_v1.py`, as agreed with the
+spec's author on 2026-11-08: FP16 NaN is `0x7E00`, and INT32 output saturates to
+[−2^31, 2^31 − 1].
 
 ## Evidence (2026-10-22/23)
 
